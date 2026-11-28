@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#20252D">
+  <meta name="description" content="Sachsen-Anhalt Dart – deine digitale Darts-App.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <title>Sachsen-Anhalt Dart</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+</head>
+
+<body>
+  <div id="app">
+
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark">SA</div>
+        <div class="brand-text">
+          <h1>SACHSEN-ANHALT DART</h1>
+          <p>Dein Dart. Dein Spiel. Dein Land.</p>
+        </div>
+      </div>
+
+      <button id="install-button" class="icon-button" type="button" hidden>
+        Installieren
+      </button>
+    </header>
+
+    <main id="main-content">      <section id="page-home" class="page active" data-page="home">
+        <div class="welcome-panel">
+          <div class="welcome-copy">
+            <span class="eyebrow">WILLKOMMEN BEI</span>
+            <h2>Sachsen-Anhalt Dart</h2>
+            <p>Deine Darts. Deine Regeln. Dein Spiel.</p>
+          </div>
+          <div class="welcome-emblem" aria-hidden="true">🎯</div>
+        </div>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">SPIELSTART</span>
+              <h2>Was möchtest du spielen?</h2>
+            </div>
+          </div>
+
+          <div class="mode-grid">
+            <button class="mode-card featured" type="button" data-mode="x01">
+              <span class="mode-icon">🎯</span>
+              <span class="mode-name">X01</span>
+              <span class="mode-description">301 · 501 · 701</span>
+            </button>
+
+            <button class="mode-card" type="button" data-mode="cricket">
+              <span class="mode-icon">🏏</span>
+              <span class="mode-name">Cricket</span>
+              <span class="mode-description">Strategie und Punkte</span>
+            </button>
+
+            <button class="mode-card" type="button" data-mode="highscore">
+              <span class="mode-icon">🏆</span>
+              <span class="mode-name">Highscore</span>
+              <span class="mode-description">Höchste Punktzahl</span>
+            </button>
+
+            <button class="mode-card" type="button" data-mode="around">
+              <span class="mode-icon">🔢</span>
+              <span class="mode-name">Around the Clock</span>
+              <span class="mode-description">Von 1 bis 20</span>
+            </button>
+
+            <button class="mode-card" type="button" data-mode="training">
+              <span class="mode-icon">🎓</span>
+              <span class="mode-name">Training</span>
+              <span class="mode-description">Gezielt besser werden</span>
+            </button>
+
+            <button class="mode-card" type="button" data-mode="durst">
+              <span class="mode-icon">🥤</span>
+              <span class="mode-name">Dart & Durst</span>
+              <span class="mode-description">Double or Triple</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">MEHR MÖGLICHKEITEN</span>
+              <h2>Weitere Bereiche</h2>
+            </div>
+          </div>
+
+          <div class="quick-links">
+            <button type="button" class="quick-link" data-page-target="tournament">
+              <span>🏆</span>
+              <span>Turniere</span>
+              <span>›</span>
+            </button>
+
+            <button type="button" class="quick-link" data-page-target="players">
+              <span>👥</span>
+              <span>Spielerverwaltung</span>
+              <span>›</span>
+            </button>
+
+            <button type="button" class="quick-link" data-page-target="stats">
+              <span>📊</span>
+              <span>Statistiken</span>
+              <span>›</span>
+            </button>
+
+            <button type="button" class="quick-link" data-page-target="settings">
+              <span>⚙️</span>
+              <span>Einstellungen</span>
+              <span>›</span>
+            </button>
+          </div>
+        </section>
+    </section>      <section id="page-setup" class="page" data-page="setup">
+        <div class="page-heading">
+          <button type="button" class="back-button" data-page-target="home">← Zurück</button>
+          <span class="eyebrow">SPIEL EINRICHTEN</span>
+          <h2 id="setup-title">Neues Dartspiel</h2>
+          <p>Wähle deine Spieler und Spielregeln.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Spieler</h3>
+          <div id="setup-player-list"></div>
+
+          <div class="add-player-row">
+            <input id="quick-player-name" type="text"
+              placeholder="Spielername eingeben" maxlength="24">
+            <button id="quick-add-player" type="button">Hinzufügen</button>
+          </div>
+        </div>
+
+        <div id="x01-options" class="panel">
+          <h3>X01 Einstellungen</h3>
+
+          <label for="x01-start">Startpunktzahl</label>
+          <select id="x01-start">
+            <option value="301">301</option>
+            <option value="501" selected>501</option>
+            <option value="701">701</option>
+            <option value="901">901</option>
+            <option value="1001">1001</option>
+          </select>
+
+          <label for="x01-in">Spielbeginn</label>
+          <select id="x01-in">
+            <option value="single">Single In</option>
+            <option value="double">Double In</option>
+            <option value="master">Master In</option>
+          </select>
+
+          <label for="x01-out">Spielende</label>
+          <select id="x01-out">
+            <option value="single">Single Out</option>
+            <option value="double" selected>Double Out</option>
+            <option value="master">Master Out</option>
+          </select>
+        </div>
+
+        <div id="general-options" class="panel">
+          <h3>Spielregeln</h3>
+          <label for="round-limit">Anzahl der Runden</label>
+          <select id="round-limit">
+            <option value="5">5 Runden</option>
+            <option value="10" selected>10 Runden</option>
+            <option value="15">15 Runden</option>
+            <option value="20">20 Runden</option>
+          </select>
+        </div>
+
+        <div id="durst-options" class="panel">
+          <h3>🥤 Dart & Durst – Double or Triple</h3>
+          <p>10 Wurfrunden mit jeweils drei Darts. Nur Double, Triple, Bull und Bullseye zählen. Singles und Fehlwürfe zählen null.</p>
+          <p>Getränke gehören zur Spielrunde dazu.</p>
+        </div>
+
+        <button id="start-game" class="primary-button" type="button">
+          Spiel starten
+        </button>
+      </section>
+
+      <section id="page-game" class="page" data-page="game">
+        <div class="game-topbar">
+          <button id="leave-game" class="back-button" type="button">← Spiel verlassen</button>
+          <span id="game-mode-label">501 · Double Out</span>
+        </div>
+
+        <div class="current-player-card">
+          <span class="eyebrow">AM WURF</span>
+          <h2 id="current-player">Spieler 1</h2>
+          <div class="remaining-display">
+            <span id="remaining-score">501</span>
+            <small id="remaining-label">Rest</small>
+          </div>
+          <div class="round-info">
+            Runde <strong id="game-round">1</strong>
+          </div>
+        </div>
+
+        <div class="panel dart-entry-panel">
+          <h3>Deine Würfe</h3>
+          <div id="dart-slots">
+            <div class="dart-slot">Dart 1: –</div>
+            <div class="dart-slot">Dart 2: –</div>
+            <div class="dart-slot">Dart 3: –</div>
+          </div>
+
+          <div class="visit-summary">
+            <span>Geworfen</span>
+            <strong id="visit-total">0</strong>
+          </div>
+
+          <div class="dart-actions">
+            <button id="undo-dart" type="button">Letzten Wurf zurück</button>
+            <button id="undo-visit" type="button">Runde zurück</button>
+            <button id="miss-dart" type="button">Pappe!</button>
+            <button id="finish-visit" type="button">Nächster Spieler</button>
+          </div>
+        </div>
+
+        <div class="dartboard-panel">
+          <h3>Dartboard</h3>
+          <div id="dartboard" aria-label="Dartboard"></div>
+        </div>
+
+        <div id="checkout-panel" class="panel" hidden>
+          <h3>Checkout</h3>
+          <p id="checkout-suggestion"></p>
+        </div>
+
+        <div id="game-message" class="game-message" aria-live="polite"></div>
+
+        <div class="panel">
+          <h3>Spielstand</h3>
+          <div id="scoreboard-list"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Letzte Würfe</h3>
+          <div id="game-history"></div>
+        </div>
+
+        <button id="finish-game" class="secondary-button" type="button">
+          Spiel beenden
+        </button>
+      </section>      <section id="page-result" class="page" data-page="result">
+        <div class="page-heading">
+          <span class="eyebrow">SPIEL BEENDET</span>
+          <h2 id="result-title">Spielergebnis</h2>
+        </div>
+
+        <div class="result-winner panel">
+          <span>🏆</span>
+          <h2 id="winner-display">Gewinner</h2>
+        </div>
+
+        <div class="panel">
+          <h3>Endstand</h3>
+          <div id="result-list"></div>
+        </div>
+
+        <button id="play-again" class="primary-button" type="button">
+          Neues Spiel
+        </button>
+        <button class="secondary-button" type="button" data-page-target="home">
+          Zur Startseite
+        </button>
+      </section>
+
+      <section id="page-tournament" class="page" data-page="tournament">
+        <div class="page-heading">
+          <button class="back-button" type="button" data-page-target="home">← Zurück</button>
+          <span class="eyebrow">WETTBEWERB</span>
+          <h2>Turniere</h2>
+          <p>Plane und verwalte deine Dartturniere.</p>
+        </div>
+        <div class="panel">
+          <h3>Turnier erstellen</h3>
+          <input id="tournament-name" type="text" placeholder="Turniername">
+          <select id="tournament-format">
+            <option value="ko">K.-o.-System</option>
+            <option value="round-robin">Jeder gegen jeden</option>
+          </select>
+          <button id="create-tournament" class="primary-button" type="button">Turnier erstellen</button>
+        </div>
+        <div id="tournament-content" class="panel"></div>
+      </section>
+
+      <section id="page-players" class="page" data-page="players">
+        <div class="page-heading">
+          <button class="back-button" type="button" data-page-target="home">← Zurück</button>
+          <span class="eyebrow">VERWALTUNG</span>
+          <h2>Spieler</h2>
+        </div>
+        <div class="panel">
+          <input id="profile-name" type="text" placeholder="Neuen Spieler anlegen">
+          <button id="create-player" class="primary-button" type="button">Spieler hinzufügen</button>
+          <div id="player-profiles"></div>
+        </div>
+      </section>
+
+      <section id="page-stats" class="page" data-page="stats">
+        <div class="page-heading">
+          <button class="back-button" type="button" data-page-target="home">← Zurück</button>
+          <span class="eyebrow">AUSWERTUNG</span>
+          <h2>Statistiken</h2>
+        </div>
+        <div id="statistics-content" class="panel"></div>
+        <div class="panel">
+          <h3>Spielverlauf</h3>
+          <div id="game-history-list"></div>
+        </div>
+      </section>
+
+      <section id="page-settings" class="page" data-page="settings">
+        <div class="page-heading">
+          <button class="back-button" type="button" data-page-target="home">← Zurück</button>
+          <span class="eyebrow">ANPASSEN</span>
+          <h2>Einstellungen</h2>
+        </div>
+
+        <div class="panel">
+          <h3>Sprachkommentar</h3>
+          <label><input id="voice-player" type="checkbox" checked> Spieleransagen</label>
+          <label><input id="voice-score" type="checkbox" checked> Punkte und Würfe</label>
+          <label><input id="voice-results" type="checkbox" checked> Spielergebnisse</label>
+          <label for="voice-speed">Sprechgeschwindigkeit</label>
+          <input id="voice-speed" type="range" min="0.7" max="1.3" step="0.1" value="1">
+          <button id="voice-test" type="button">Stimme testen</button>
+        </div>
+
+        <div class="panel">
+          <h3>Weitere Einstellungen</h3>
+          <label><input id="confirm-end" type="checkbox" checked> Spielende bestätigen</label>
+          <label><input id="keep-screen-on" type="checkbox"> Bildschirm aktiv halten</label>
+        </div>
+
+        <div class="panel">
+          <h3>Datensicherung</h3>
+          <button id="export-data" type="button">Daten exportieren</button>
+          <label for="import-file">Sicherung importieren</label>
+          <input id="import-file" type="file" accept="application/json">
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <span>SACHSEN-ANHALT DART</span>
+      <span>Mit Leidenschaft für Darts</span>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
